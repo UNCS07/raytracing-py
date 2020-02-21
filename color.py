@@ -1,6 +1,6 @@
 from vector import Vector
 
-color_table = {'r':(1,0,0),
+ctable = {'r':(1,0,0),
                'g':(0,1,0),
                'b':(0,0,1),
                'y':(1,1,0),
@@ -11,11 +11,11 @@ color_table = {'r':(1,0,0),
 
 class Color(Vector):
 
-    def __init__(self, d=(0,0,0)):
+    def __init__(self, d=(0,0,0), o = None):
         self.o = (0, 0, 0)
         self.d = d
 
+
     def set_as(self, color):
-        print(color_table[color])
-        self.d = color_table[color]
+        self.d = ctable[color]
         return self

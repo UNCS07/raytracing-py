@@ -7,36 +7,28 @@ class Vector:
         self.d = d
 
     def __add__(self, other):
-        if type(other) is not Vector:
-            raise TypeError
         o = self.o
         d = tuple([other.d[i]+self.d[i]-other.o[i]-self.o[i] for i in range(3)])
-        result = Vector(o, d)
-        return result
+        return self.__class__(o, d)
 
     def __sub__(self, other):
-        if type(other) is not Vector:
-            raise TypeError
         o = self.o
         d = tuple([other.d[i]-self.d[i]-other.o[i]-self.o[i] for i in range(3)])
-        result = Vector(o, d)
-        return result
+        return self.__class__(o, d)
 
     def __mul__(self, other):
         if type(other) in (Vector, str):
             raise TypeError
         o = self.o
         d = tuple([(self.d[i]-self.o[i])*other+self.o[i] for i in range(3)])
-        result = Vector(o, d)
-        return result
+        return self.__class__(o, d)
 
     def __truediv__(self, other):
         if type(other) in (Vector, str):
             raise TypeError
         o = self.o
         d = tuple([(self.d[i] - self.o[i]) / other + self.o[i] for i in range(3)])
-        result = Vector(o, d)
-        return result
+        return self.__class__(o, d)
 
     def __str__(self):
         return str(self.o)+str(self.d)
